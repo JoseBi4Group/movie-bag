@@ -15,7 +15,6 @@ def get_movies():
 def add_movie():
     user_id = get_jwt_identity()
     body = request.get_json()
-    movie = Movie(**body).save()
     user = User.objects.get(id=user_id)
     movie = Movie(**body, added_by=user)
     movie.save()
